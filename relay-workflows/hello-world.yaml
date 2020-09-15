@@ -5,4 +5,4 @@ steps:
 - name: hello-world
   image: projectnebula/core
   input:
-  - echo "Hello world from version 2.0.3 Your message was $(ni get -p {.message})"
+  - echo "Hello world from version 2.0.4 Your message was $(ni get -p {.message})"
