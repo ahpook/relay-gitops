@@ -1,0 +1,8 @@
+parameters:
+  message:
+    description: "The message to output from this step"
+steps:
+- name: hello-world
+  image: projectnebula/core
+  input:
+  - echo "Hello world. Your message was $(ni get -p {.message})"
