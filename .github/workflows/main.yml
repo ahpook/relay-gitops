@@ -19,4 +19,4 @@ jobs:
       with:
          RELAY_USERNAME: ${{ secrets.RELAY_USERNAME }}
          RELAY_PASSWORD: ${{ secrets.RELAY_PASSWORD }}
-         RELAY_WORKFLOWDIR: "relay-workflows"
+         RELAY_WORKFLOWDIR: relay-workflows
