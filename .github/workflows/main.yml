@@ -20,3 +20,4 @@ jobs:
          RELAY_USERNAME: ${{ secrets.RELAY_USERNAME }}
          RELAY_PASSWORD: ${{ secrets.RELAY_PASSWORD }}
          RELAY_WORKFLOWDIR: relay-workflows
+         RELAY_API_DOMAIN: https://api.stage.nebula.puppet.net
