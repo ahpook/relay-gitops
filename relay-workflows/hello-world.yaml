@@ -5,4 +5,4 @@ steps:
 - name: hello-world
   image: relaysh/core
   input:
-  - echo "Hello world from version 2.0.12 Your message was $(ni get -p {.message})"
+  - echo "Hello world from version 2.0.13 Your message was $(ni get -p {.message})"
