@@ -1,0 +1,37 @@
+parameters:
+  slack-channel:
+    default: "prog-relay-testing"
+  slack-message: 
+    default: "The link checker for https://relay.sh has completed successfully. "
+
+triggers:
+- name: scheduled trigger
+  source:
+    type: schedule
+    schedule: '0 16 * * *' # This runs in UTC so adding 7 hours for better timing in PST
+
+steps:
+- name: link-checker
+  image: projectnebula/core
+  input:
+    - "#!/bin/bash"
+    - apk add --update nodejs npm jq
+    - npm install -g linkinator
+    - LINKS_ARRAY="$(linkinator https://relay.sh --recurse --format JSON)"
+    - BAD_LINKS=$( jq '[.links[] | select(.status == 404) | .url]' <<<"${LINKS_ARRAY}" )
+    - LINKS_COUNT=$( jq 'length' <<<"${BAD_LINKS}" )
+    - if [ "$LINKS_COUNT" -eq 0 ]
+    - then
+    -   MESSAGE="There are no broken links"
+    - else
+    -   LINKS_STR=$(jq -r 'join(", ")' <<<"${BAD_LINKS}")
+    -   MESSAGE="The broken links are ${LINKS_STR}"
+    - fi
+    - ni output set --key broken-links --value "${MESSAGE}"
+- name: slack-message
+  dependsOn: link-checker
+  image: relaysh/slack-step-message-send
+  spec:
+    channel: !Parameter slack-channel
+    message: !Fn.concat [!Parameter slack-message, !Output [link-checker, broken-links]]
+    connection: !Connection [slack, slack-charles-messier]
