@@ -3,6 +3,6 @@ parameters:
     description: "The message to output from this step"
 steps:
 - name: hello-world
-  image: projectnebula/core
+  image: relaysh/core
   input:
-  - echo "Hello world from version 2.0.11 Your message was $(ni get -p {.message})"
+  - echo "Hello world from version 2.0.12 Your message was $(ni get -p {.message})"
