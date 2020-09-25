@@ -1,3 +1,4 @@
+# the source of truth for this is in git
 parameters:
   slack-channel:
     default: "prog-relay-testing"
