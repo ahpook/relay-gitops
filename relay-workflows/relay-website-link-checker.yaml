@@ -1,4 +1,5 @@
-# the source of truth for this is in git
+# the source of truth for this is in git:
+# https://github.com/ahpook/relay-gitops
 parameters:
   slack-channel:
     default: "prog-relay-testing"
