@@ -15,11 +15,12 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - uses: ahpook/relaysh-docker-update-workflow@main
+    - uses: ahpook/relaysh-docker-update-workflow@python_rewrite
       with:
          RELAY_USERNAME: ${{ secrets.RELAY_USERNAME }}
          RELAY_PASSWORD: ${{ secrets.RELAY_PASSWORD }}
-         RELAY_WORKFLOWDIR: relay-workflows
+         RELAY_WORKFLOW: "hello-world"
+         RELAY_WORKFLOW_FILE: "workflows/hello-world.yaml"
 # uncomment to update staging instead of prod
 #      env:
 #         RELAY_API_DOMAIN: https://api.stage.nebula.puppet.net
