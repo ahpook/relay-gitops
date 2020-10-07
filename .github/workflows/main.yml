@@ -19,7 +19,7 @@ jobs:
       with:
          RELAY_USERNAME: ${{ secrets.RELAY_USERNAME }}
          RELAY_PASSWORD: ${{ secrets.RELAY_PASSWORD }}
-         RELAY_WORKFLOW_FILE: relay-workflows/hello-world.yaml
+         RELAY_WORKFLOW_FILE: "relay-workflows/hello-world.yaml"
 # uncomment to update staging instead of prod
 #      env:
 #         RELAY_API_DOMAIN: https://api.stage.nebula.puppet.net
